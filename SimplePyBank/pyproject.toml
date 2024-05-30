@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "simplepybank"
+version = "0.1.0"
+description = "A Simple Python Banking System in PT/BR."
+authors = ["Fabrício Dos Santos Moreira"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytz = "^2024.1"
+wcwidth = "^0.2.13"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
