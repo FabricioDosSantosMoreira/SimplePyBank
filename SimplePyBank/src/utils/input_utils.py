@@ -1,45 +1,71 @@
-from app.Interface import Interface
 from typing import Union
 
 
-def ler_str(*, msg: str) -> Union[str, int]:
+def read_str_input(*, msg: str) -> Union[str, int]:
+    from app.Interface import Interface
+    """
+    Prompts the user for a string input, ensuring the input is valid and non-empty.
+
+    Args:
+        msg (str): The message to display when prompting the user for input.
+
+    Returns: 
+        Union[str, int]: The string value if it is valid. 
+        -1 if the user interrupts the program or if any other error occurs.
+        
+    Raises:
+        None. All exceptions are handled within the function.
+    """
     while True:
-
+        
         try:
-            valor_str = str(input(msg))
+            value = str(input(msg))
 
-            if not valor_str or valor_str.isspace():
+            if not value or value.isspace():
                 raise ValueError
 
-            return valor_str
+            return value
 
         except ValueError:
-            Interface.avisar('Entrada inválida. Por favor, tente novamente.', tipo_aviso=2)
+            Interface.warn('Invalid input. Please, try again.\n', warn_type=0)
 
         except KeyboardInterrupt:
-            Interface.avisar('Programa interrompido pelo usuário.', tipo_aviso=2)
+            Interface.warn('Program interrupted by user.\n', warn_type=0)
             return -1
         
         except Exception as e:
-            Interface.avisar(f'Ocorreu um erro: {e}', tipo_aviso=2)
+            Interface.warn(f'An error occurred: {e}\n', warn_type=0)
             return -1
 
 
-def ler_int(*, msg: str) -> Union[str, int]:
+def read_int_input(*, msg: str) -> Union[str, int]:
+    from app.Interface import Interface
+    """
+    Prompts the user for a integer input, ensuring the input is valid.
+
+    Args:
+        msg (str): The message to display when prompting the user for input.
+
+    Returns: 
+        Union[str, int]: The integer value if it is valid. 
+        -1 if the user interrupts the program or if any other error occurs.
+        
+    Raises:
+        None. All exceptions are handled within the function.
+    """
     while True:
 
         try:
-            valor_int: int = int(input(msg))
-            return valor_int
+            value = int(input(msg))
+            return value
 
         except ValueError:
-            Interface.avisar('Entrada inválida. Por favor, tente novamente.', tipo_aviso=2)
+            Interface.warn('Invalid input. Please, try again.\n', warn_type=0)
 
         except KeyboardInterrupt:
-            Interface.avisar('Programa interrompido pelo usuário.', tipo_aviso=2)
+            Interface.warn('Program interrupted by user.\n', warn_type=0)
             return -1
         
         except Exception as e:
-            Interface.avisar(f'Ocorreu um erro: {e}', tipo_aviso=2)
+            Interface.warn(f'An error occurred: {e}\n', warn_type=0)
             return -1
-        

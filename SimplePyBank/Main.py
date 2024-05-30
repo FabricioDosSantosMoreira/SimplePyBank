@@ -1,7 +1,7 @@
-from app.Interface import Interface
-from classes.cliente.Cliente import Cliente
-from classes.cartao.Cartao import Cartao
-from classes.conta.Conta import Conta
+from src.app.Interface import Interface
+from src.classes.cliente.Cliente import Cliente
+from src.classes.cartao.Cartao import Cartao
+from src.classes.conta.Conta import Conta
 
 
 from typing import List
@@ -19,12 +19,14 @@ class Main():
 
         self.interface = Interface(self)
 
+
     def start(self) -> None:
 
         while self.is_running:
             self.interface.menu()
 
         quit('\nPyBank Fechado!')
+
 
     def update(self) -> None:
         self.start()
@@ -40,3 +42,8 @@ class Main():
     @property
     def contas(self) -> List[Conta]:
         return self._contas
+
+
+if __name__ == '__main__':
+    app = Main()
+    app.start()

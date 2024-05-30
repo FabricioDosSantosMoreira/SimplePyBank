@@ -22,7 +22,7 @@ class Configs():
         self.string_delimiter: str = '...'
 
         # NOTE: Available alignments: 'left', 'center', 'right'
-        self.headers_alignment: str = ['left', 'center']
+        self.headers_alignment: str = ['left', 'left']
         self.content_alignment: List[str] = ['center', 'left']
 
 
@@ -30,12 +30,8 @@ class Configs():
         self.flag: str = "PyBank"
         self.flag_digit: int = 7
         self.card_digit_count: int = 19
-
         self.minimum_validity: int = 6 # 6 months
-
         self.branches: List[str] = ["0001", "0002", "0004"]
         self.payment_days: List[int] = [5, 15, 28]
         self.current_timezone: tuple = pytz.timezone('America/Sao_Paulo')
         self.interest_rate = 0.05 # 5% per month
-
-
