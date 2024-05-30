@@ -1,39 +1,34 @@
 from app.Configs import *
 
-from cartao.Cartao import Cartao
+from card.Card import Card
 
 from datetime import date
 from typing import Dict
 
-from transacao.Transacao import Transferencia
-
+from transaction.Transaction import Transfer
+from app.Configs import Configs
 
 # Extende a classe 'Cartao()'. Herança simples
-class CartaoCredito(Cartao):
+class CreditCard(Card):
     
-    def __init__(self, conta, limite: float) -> None:
-        super().__init__(conta)
+    def __init__(self, account, limit: float) -> None:
+        super().__init__(account)
+        self.configs = Configs()
 
-        self._limite = limite
+        self._limit= limit
+        self._interest_rate = self.configs.interest_rate
+        self._invoice: Dict[date, float] = {}
 
-        self._taxa_juros = TAXA_JUROS
-        self._fatura: Dict[date, float] = {}
 
     def realizar_pagamento():
 
         #TODO:
+        print("IMPLEMENT ME!!!!!!!!!!!!!")
         
 
+    def calculate_interest(self, value: float, monthly_interest_rate: float, period: date) -> float:
 
-
-
-
-
-
-    def calcular_juros(self, valor: float, taxa_juros_mensal: float, periodo: int) -> float:
-        # NOTE: Periodo deve ser date.month
-
-        return valor * taxa_juros_mensal * periodo
+        return value * monthly_interest_rate * period.month
 
     def adicionar_valor_na_fatura(self, valor: float, periodo: int) -> None:
         # NOTE: Periodo deve ser date.month
@@ -61,14 +56,19 @@ class CartaoCredito(Cartao):
         return resto
 
     @property
-    def fatura(self) -> Dict[date, float]:
-        return self._fatura
+    def invoice(self) -> Dict[date, float]:
+        return self._invoice
     
-    @fatura.setter
-    def fatura(self, data: date, valor: float) -> None:  
-        self._fatura[data] = valor
+    @invoice.setter
+    def fatura(self, date: date, value: float) -> None:  
+        self._invoice[date] = value
 
     @property
-    def limite(self) -> float:
-        return self._limite
+    def limit(self) -> float:
+        return self._limit
     
+    @limit.setter
+    def limit(self, value: float) -> None:
+        self._limit = value
+    
+

@@ -31,7 +31,7 @@ class Configs():
         self.flag_digit: int = 7
         self.card_digit_count: int = 19
         self.minimum_validity: int = 6 # 6 months
-        self.branches: List[str] = ["0001", "0002", "0004"]
+        self.agencies: List[str] = ["0001", "0002", "0004"]
         self.payment_days: List[int] = [5, 15, 28]
         self.current_timezone: tuple = pytz.timezone('America/Sao_Paulo')
         self.interest_rate = 0.05 # 5% per month
